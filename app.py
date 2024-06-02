@@ -1,9 +1,10 @@
 import dash
 from dash import dcc, html
 from dash.dependencies import Input, Output
+import dash_bootstrap_components as dbc
 
 # Initialize the Dash app
-app = dash.Dash(__name__, suppress_callback_exceptions=True)
+app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
 server = app.server
 
 # Import the page layouts and callback registration functions
@@ -30,6 +31,6 @@ if __name__ == '__main__':
     from page_2 import register_callbacks as register_callbacks_page_2
     register_callbacks_page_1(app)
     register_callbacks_page_2(app)
-    app.run_server(debug=True)
+    app.run_server(host='0.0.0.0',debug=True, port=8090)
 
 
